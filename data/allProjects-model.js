@@ -36,6 +36,12 @@ const getAllTasks = () => {
 	return db('task');
 };
 
+const getProjectTasks = (projectID) => {
+
+        return db('task').where({projectID: projectID});
+
+}
+
 //Assigning Resource to a Project
 
 const assignResource = (obj) => {
@@ -59,6 +65,7 @@ module.exports = {
     getAllResources,
     addTask,
     getAllTasks,
+    getProjectTasks,
     assignResource,
     getAllRefs,
     getProjectRefs

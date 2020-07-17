@@ -126,4 +126,17 @@ router.get('/project/:id/resources', (req, res) => {
 		});
 });
 
+// STRETCH - get a project's tasks
+
+router.get('/project/:id/tasks', (req, res) => {
+	api
+		.getProjectTasks(req.params.id)
+		.then((returned) => {
+			res.json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;
