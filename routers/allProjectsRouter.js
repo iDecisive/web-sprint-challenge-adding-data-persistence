@@ -115,4 +115,15 @@ router.get('/refs', (req, res) => {
 
 // STRETCH - get a project's resources
 
+router.get('/project/:id/resources', (req, res) => {
+	api
+		.getProjectRefs(req.params.id)
+		.then((returned) => {
+			res.json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;
