@@ -56,6 +56,39 @@ router.get('/resource', (req, res) => {
 
 //Task crud
 
+router.post('/task', (req, res) => {
+	api
+		.addTask(req.body)
+		.then((returned) => {
+			res.status(201).json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
+router.get('/task', (req, res) => {
+	let newArr = [];
+	api
+		.getAllTasks()
+		.then((returned) => {
+			newArr = [...returned];
+			api.getAllProjects().then((projects) => {
+				newArr.forEach((task) => {
+					let foundProject = projects.filter(
+						(item) => item.id === task.projectID
+					);
+					task.projectName = foundProject[0].name;
+					task.projectDescription = foundProject[0].description;
+				});
+				res.json(newArr);
+			});
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
 //References Crud??
 
 module.exports = router;
