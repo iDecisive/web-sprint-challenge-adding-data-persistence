@@ -89,6 +89,30 @@ router.get('/task', (req, res) => {
 		});
 });
 
-//References Crud??
+//References Crud
+
+router.post('/refs', (req, res) => {
+	api
+		.assignResource(req.body)
+		.then((returned) => {
+			res.status(201).json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
+router.get('/refs', (req, res) => {
+	api
+		.getAllRefs()
+		.then((returned) => {
+			res.json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
+// STRETCH - get a project's resources
 
 module.exports = router;

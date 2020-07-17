@@ -38,11 +38,28 @@ const getAllTasks = () => {
 
 //Assigning Resource to a Project
 
+const assignResource = (obj) => {
+	return db('projectResourceJunction').insert(obj);
+};
+
+//Reading Junction Table
+
+const getAllRefs = () => {
+	return db('projectResourceJunction');
+};
+
+const getProjectRefs = (projectID) => {
+	return db('projectResourceJunction').where({ projectID: projectID });
+};
+
 module.exports = {
 	addProject,
     getAllProjects,
     addResource,
     getAllResources,
     addTask,
-    getAllTasks
+    getAllTasks,
+    assignResource,
+    getAllRefs,
+    getProjectRefs
 };
