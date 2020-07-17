@@ -14,7 +14,15 @@ const getAllProjects = () => {
 
 //Adding resources
 
+const addResource = (obj) => {
+	return db('resource').insert(obj);
+};
+
 //Reading resources
+
+const getAllResources = () => {
+	return db('resource');
+};
 
 //Adding tasks
 
@@ -23,6 +31,8 @@ const getAllProjects = () => {
 //Assigning Resource to a Project
 
 module.exports = {
-    addProject,
-    getAllProjects
-}
+	addProject,
+    getAllProjects,
+    addResource,
+    getAllResources
+};

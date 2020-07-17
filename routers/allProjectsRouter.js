@@ -32,6 +32,28 @@ router.get('/project', (req, res) => {
 
 //Resource crud
 
+router.post('/resource', (req, res) => {
+	api
+		.addResource(req.body)
+		.then((returned) => {
+			res.status(201).json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
+router.get('/resource', (req, res) => {
+	api
+		.getAllResources()
+		.then((returned) => {
+			res.json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
 //Task crud
 
 //References Crud??
