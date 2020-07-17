@@ -6,6 +6,8 @@ const router = express.Router();
 
 //Path starts at /api/
 
+//Project crud
+
 router.post('/project', (req, res) => {
 	api
 		.addProject(req.body)
@@ -16,5 +18,22 @@ router.post('/project', (req, res) => {
 			res.status(500).json(err);
 		});
 });
+
+router.get('/project', (req, res) => {
+	api
+		.getAllProjects()
+		.then((returned) => {
+			res.json(returned);
+		})
+		.catch((err) => {
+			res.status(500).json(err);
+		});
+});
+
+//Resource crud
+
+//Task crud
+
+//References Crud??
 
 module.exports = router;

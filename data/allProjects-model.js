@@ -8,6 +8,10 @@ const addProject = (obj) => {
 
 //Reading projects
 
+const getAllProjects = () => {
+	return db('project');
+};
+
 //Adding resources
 
 //Reading resources
@@ -19,5 +23,6 @@ const addProject = (obj) => {
 //Assigning Resource to a Project
 
 module.exports = {
-    addProject
+    addProject,
+    getAllProjects
 }
